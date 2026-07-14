@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        MyWorkGeniee | AI Productivity Toolkit
+
+    </title>
+
+    <meta
+        name="description"
+        content="Convert PDF to Word, Word to PDF and more. Secure document conversion.">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold fs-3 text-primary">
+
+🚀 MyWorkGeniee
+
+</a>
+
+<div class="ms-auto">
+
+<span class="badge bg-success">
+
+Version 1.0
+
+</span>
+
+</div>
+
+</div>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container">
+
+<h1>
+
+Convert Documents
+
+<span>
+
+Securely
+
+</span>
+
+</h1>
+
+<p>
+
+Fast.
+
+Private.
+
+No Registration.
+
+Works Everywhere.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<section class="container my-5">
+
+<div class="converter-card">
+
+<h2 class="text-center">
+
+Document Converter
+
+</h2>
+
+<p class="text-center text-muted mb-5">
+
+Choose a conversion type and upload your file.
+
+</p>
+
+
+
+<div class="mb-4">
+
+<label class="form-label">
+
+Choose Conversion
+
+</label>
+
+<select
+
+class="form-select form-select-lg"
+
+id="tool">
+
+<option value="pdf_to_word">
+
+PDF → Word
+
+</option>
+
+<option value="word_to_pdf">
+
+Word → PDF
+
+</option>
+
+</select>
+
+</div>
+
+
+
+<form
+
+id="uploadForm"
+
+enctype="multipart/form-data">
+
+<input
+
+type="hidden"
+
+id="selectedTool"
+
+name="tool"
+
+value="pdf_to_word">
+
+
+
+<div
+
+class="upload-box"
+
+id="dropArea">
+
+<div class="upload-icon">
+
+📂
+
+</div>
+
+<h3>
+
+Drag & Drop
+
+</h3>
+
+<p>
+
+or
+
+</p>
+
+<button
+
+type="button"
+
+class="btn btn-outline-primary"
+
+id="browseBtn">
+
+Browse Files
+
+</button>
+
+<input
+
+type="file"
+
+id="fileInput"
+
+hidden>
+
+
+
+<div
+
+id="selectedFile"
+
+class="mt-4 fw-semibold">
+
+</div>
+
+</div>
+
+
+
+<div class="text-center mt-4">
+
+<button
+
+class="btn btn-primary btn-lg px-5"
+
+id="convertBtn"
+
+type="submit">
+
+Convert
+
+</button>
+
+</div>
+        </form>
+
+        <!-- Loading -->
+
+        <div
+            id="loadingSection"
+            class="text-center mt-5"
+            style="display:none;">
+
+            <div class="spinner-border text-primary spinner-lg">
+
+                <span class="visually-hidden">
+                    Loading...
+                </span>
+
+            </div>
+
+            <h4 class="mt-4">
+
+                Converting your document...
+
+            </h4>
+
+            <p class="text-muted">
+
+                Please wait while we securely process your file.
+
+            </p>
+
+        </div>
+
+
+        <!-- Success -->
+
+        <div
+            id="successSection"
+            class="alert alert-success mt-4"
+            style="display:none;">
+
+            <h5>
+
+                ✅ Conversion Complete
+
+            </h5>
+
+            <p>
+
+                Your download should begin automatically.
+
+            </p>
+
+        </div>
+
+
+        <!-- Error -->
+
+        <div
+            id="errorSection"
+            class="alert alert-danger mt-4"
+            style="display:none;">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FEATURES -->
+
+<section class="container mb-5">
+
+<div class="row g-4">
+
+<div class="col-lg-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+🔒
+
+</div>
+
+<h4>
+
+Privacy First
+
+</h4>
+
+<p>
+
+Your files are used only for the requested conversion and are automatically removed after processing.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-lg-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+⚡
+
+</div>
+
+<h4>
+
+Fast Processing
+
+</h4>
+
+<p>
+
+Optimized Python processing designed for reliable and efficient document conversion.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-lg-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+🌍
+
+</div>
+
+<h4>
+
+Works Everywhere
+
+</h4>
+
+<p>
+
+Compatible with Windows, macOS, Linux, Android and iPhone. No installation required.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- WHY US -->
+
+<section class="container mb-5">
+
+<div class="info-box">
+
+<h2>
+
+Why Choose MyWorkGeniee?
+
+</h2>
+
+<ul>
+
+<li>
+
+✅ Original filename preserved after conversion
+
+</li>
+
+<li>
+
+✅ Secure HTTPS connection in production
+
+</li>
+
+<li>
+
+✅ No registration required
+
+</li>
+
+<li>
+
+✅ Automatic cleanup of uploaded files
+
+</li>
+
+<li>
+
+✅ Modern AI-ready architecture
+
+</li>
+
+<li>
+
+✅ More productivity tools coming soon
+
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+
+<!-- FAQ -->
+
+<section class="container mb-5">
+
+<h2 class="text-center mb-4">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="accordion" id="faqAccordion">
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button
+class="accordion-button"
+data-bs-toggle="collapse"
+data-bs-target="#faq1">
+
+Are my files stored?
+
+</button>
+
+</h2>
+
+<div
+id="faq1"
+class="accordion-collapse collapse show">
+
+<div class="accordion-body">
+
+Files are processed only for the requested conversion and are automatically deleted after processing.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button
+class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#faq2">
+
+Do I need an account?
+
+</button>
+
+</h2>
+
+<div
+id="faq2"
+class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+No. All current tools are available without creating an account.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button
+class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#faq3">
+
+Will more tools be added?
+
+</button>
+
+</h2>
+
+<div
+id="faq3"
+class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+Yes. Future updates will include Excel, PowerPoint, AI productivity tools and many more.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+        </form>
+
+        <!-- Loading -->
+
+        <div
+            id="loadingSection"
+            class="text-center mt-5"
+            style="display:none;">
+
+            <div class="spinner-border text-primary spinner-lg">
+
+                <span class="visually-hidden">
+                    Loading...
+                </span>
+
+            </div>
+
+            <h4 class="mt-4">
+
+                Converting your document...
+
+            </h4>
+
+            <p class="text-muted">
+
+                Please wait while we securely process your file.
+
+            </p>
+
+        </div>
+
+
+        <!-- Success -->
+
+        <div
+            id="successSection"
+            class="alert alert-success mt-4"
+            style="display:none;">
+
+            <h5>
+
+                ✅ Conversion Complete
+
+            </h5>
+
+            <p>
+
+                Your download should begin automatically.
+
+            </p>
+
+        </div>
+
+
+        <!-- Error -->
+
+        <div
+            id="errorSection"
+            class="alert alert-danger mt-4"
+            style="display:none;">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FEATURES -->
+
+<section class="container mb-5">
+
+<div class="row g-4">
+
+<div class="col-lg-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+🔒
+
+</div>
+
+<h4>
+
+Privacy First
+
+</h4>
+
+<p>
+
+Your files are used only for the requested conversion and are automatically removed after processing.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-lg-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+⚡
+
+</div>
+
+<h4>
+
+Fast Processing
+
+</h4>
+
+<p>
+
+Optimized Python processing designed for reliable and efficient document conversion.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-lg-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+🌍
+
+</div>
+
+<h4>
+
+Works Everywhere
+
+</h4>
+
+<p>
+
+Compatible with Windows, macOS, Linux, Android and iPhone. No installation required.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- WHY US -->
+
+<section class="container mb-5">
+
+<div class="info-box">
+
+<h2>
+
+Why Choose MyWorkGeniee?
+
+</h2>
+
+<ul>
+
+<li>
+
+✅ Original filename preserved after conversion
+
+</li>
+
+<li>
+
+✅ Secure HTTPS connection in production
+
+</li>
+
+<li>
+
+✅ No registration required
+
+</li>
+
+<li>
+
+✅ Automatic cleanup of uploaded files
+
+</li>
+
+<li>
+
+✅ Modern AI-ready architecture
+
+</li>
+
+<li>
+
+✅ More productivity tools coming soon
+
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+
+<!-- FAQ -->
+
+<section class="container mb-5">
+
+<h2 class="text-center mb-4">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="accordion" id="faqAccordion">
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button
+class="accordion-button"
+data-bs-toggle="collapse"
+data-bs-target="#faq1">
+
+Are my files stored?
+
+</button>
+
+</h2>
+
+<div
+id="faq1"
+class="accordion-collapse collapse show">
+
+<div class="accordion-body">
+
+Files are processed only for the requested conversion and are automatically deleted after processing.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button
+class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#faq2">
+
+Do I need an account?
+
+</button>
+
+</h2>
+
+<div
+id="faq2"
+class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+No. All current tools are available without creating an account.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button
+class="accordion-button collapsed"
+data-bs-toggle="collapse"
+data-bs-target="#faq3">
+
+Will more tools be added?
+
+</button>
+
+</h2>
+
+<div
+id="faq3"
+class="accordion-collapse collapse">
+
+<div class="accordion-body">
+
+Yes. Future updates will include Excel, PowerPoint, AI productivity tools and many more.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>

@@ -1,0 +1,15 @@
+__pycache__/
+
+uploads/*
+outputs/*
+logs/*
+
+*.pyc
+
+.env
+
+.vscode/
+
+.idea/
+
+Thumbs.db

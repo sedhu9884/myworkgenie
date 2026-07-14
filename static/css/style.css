@@ -1,0 +1,623 @@
+/* ==========================================
+   MyWorkGeniee v1.0
+==========================================*/
+
+:root{
+
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --secondary:#4f46e5;
+
+    --success:#16a34a;
+    --danger:#dc2626;
+
+    --text:#334155;
+    --light:#f8fafc;
+    --white:#ffffff;
+
+    --shadow:0 15px 40px rgba(0,0,0,.08);
+
+    --radius:18px;
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f4f7fb;
+
+    color:var(--text);
+
+}
+
+
+/* ==============================
+Navbar
+============================== */
+
+.navbar{
+
+    padding:18px 0;
+
+    background:white !important;
+
+}
+
+.navbar-brand{
+
+    font-weight:700;
+
+}
+
+
+/* ==============================
+Hero
+============================== */
+
+.hero{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color:white;
+
+    padding:100px 20px;
+
+    text-align:center;
+
+}
+
+.hero h1{
+
+    font-size:56px;
+
+    font-weight:700;
+
+}
+
+.hero h1 span{
+
+    display:block;
+
+    color:#FFD54F;
+
+}
+
+.hero p{
+
+    margin-top:25px;
+
+    font-size:20px;
+
+    opacity:.95;
+
+}
+
+
+/* ==============================
+Converter
+============================== */
+
+.converter-card{
+
+    background:white;
+
+    margin-top:-60px;
+
+    position:relative;
+
+    z-index:5;
+
+    border-radius:24px;
+
+    padding:45px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.converter-card h2{
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+/* ==============================
+Upload Box
+============================== */
+
+.upload-box{
+
+    margin-top:25px;
+
+    border:3px dashed #cbd5e1;
+
+    border-radius:20px;
+
+    padding:60px 30px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    background:#fbfdff;
+
+}
+
+.upload-box:hover{
+
+    border-color:var(--primary);
+
+    background:#eef5ff;
+
+}
+
+.upload-box.drag{
+
+    border-color:var(--primary);
+
+    background:#e8f1ff;
+
+    transform:scale(1.01);
+
+}
+
+.upload-icon{
+
+    font-size:70px;
+
+    margin-bottom:15px;
+
+}
+
+.upload-box h3{
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+}
+
+.upload-box p{
+
+    color:#64748b;
+
+}
+
+#selectedFile{
+
+    margin-top:25px;
+
+    color:var(--primary);
+
+    font-size:18px;
+
+}
+
+
+/* ==============================
+Buttons
+============================== */
+
+.btn{
+
+    border-radius:50px;
+
+    transition:.25s;
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    border:none;
+
+    padding:14px 45px;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+.btn-outline-primary{
+
+    border-radius:50px;
+
+    padding:12px 28px;
+
+}
+
+
+/* ==============================
+Loading
+============================== */
+
+.spinner-lg{
+
+    width:4rem;
+
+    height:4rem;
+
+}
+
+#loadingSection{
+
+    padding:30px;
+
+}
+
+#successSection{
+
+    border-radius:16px;
+
+}
+
+#errorSection{
+
+    border-radius:16px;
+
+}
+
+
+/* ==============================
+Features
+============================== */
+
+.feature-card{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    height:100%;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(37,99,235,.12);
+
+}
+
+.feature-icon{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.feature-card h4{
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+/* ==============================
+Info Box
+============================== */
+
+.info-box{
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+
+    color:white;
+
+    border-radius:24px;
+
+    padding:50px;
+
+    box-shadow:0 18px 45px rgba(37,99,235,.18);
+
+}
+
+.info-box h2{
+
+    margin-bottom:25px;
+
+    font-weight:700;
+
+}
+
+.info-box ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.info-box li{
+
+    padding:10px 0;
+
+    font-size:17px;
+
+}
+
+
+/* ==============================
+FAQ
+============================== */
+
+.accordion-item{
+
+    border:none;
+
+    border-radius:18px !important;
+
+    overflow:hidden;
+
+    margin-bottom:18px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+}
+
+.accordion-button{
+
+    font-weight:600;
+
+    padding:20px;
+
+}
+
+.accordion-button:not(.collapsed){
+
+    background:#eef5ff;
+
+    color:var(--primary);
+
+}
+
+.accordion-body{
+
+    line-height:1.8;
+
+}
+
+
+/* ==============================
+Footer
+============================== */
+
+.footer{
+
+    margin-top:80px;
+
+    background:#0f172a;
+
+    color:white;
+
+    padding:60px 0;
+
+}
+
+.footer h3,
+.footer h5{
+
+    margin-bottom:20px;
+
+}
+
+.footer-links{
+
+    list-style:none;
+
+    padding:0;
+
+}
+
+.footer-links li{
+
+    margin-bottom:10px;
+
+    opacity:.9;
+
+}
+
+.footer hr{
+
+    margin:35px 0;
+
+    border-color:rgba(255,255,255,.15);
+
+}
+
+
+/* ==============================
+Accessibility
+============================== */
+
+button:focus,
+input:focus,
+select:focus,
+a:focus{
+
+    outline:3px solid #FFD54F;
+
+    outline-offset:3px;
+
+}
+
+
+/* ==============================
+Animations
+============================== */
+
+.feature-card,
+.converter-card,
+.info-box{
+
+    animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==============================
+Responsive
+============================== */
+
+@media(max-width:992px){
+
+.hero h1{
+
+    font-size:42px;
+
+}
+
+.converter-card{
+
+    margin-top:-30px;
+
+    padding:30px;
+
+}
+
+.info-box{
+
+    padding:35px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+
+    padding:70px 20px;
+
+}
+
+.hero h1{
+
+    font-size:34px;
+
+}
+
+.hero p{
+
+    font-size:17px;
+
+}
+
+.upload-box{
+
+    padding:40px 20px;
+
+}
+
+.upload-icon{
+
+    font-size:50px;
+
+}
+
+.btn{
+
+    width:100%;
+
+}
+
+.footer{
+
+    text-align:center;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.hero h1{
+
+    font-size:28px;
+
+}
+
+.converter-card{
+
+    padding:20px;
+
+}
+
+.feature-card{
+
+    padding:25px;
+
+}
+
+.info-box{
+
+    padding:25px;
+
+}
+
+}

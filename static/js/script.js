@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-            const url = window.URL.createObjectURL(blob);
+            const url = URL.createObjectURL(blob);
 
             const a = document.createElement("a");
 

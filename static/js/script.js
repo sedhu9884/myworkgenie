@@ -38,11 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             fileInput.accept=".pdf";
 
+            fileInput.multiple=false;
+
         }
 
-        else{
+        else if(tool.value==="merge_pdf"){
 
-            fileInput.accept=".doc,.docx";
+            fileInput.accept=".pdf";
+
+            fileInput.multiple=true;
 
         }
 
@@ -78,7 +82,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        const file=fileInput.files[0];
+        selectedFile.innerHTML="";
+
+        for(let i=0;i<fileInput.files.length;i++){
+
+            const file=fileInput.files[i];
+
+            selectedFile.innerHTML+=
+
+                "📄 "+file.name+
+
+                "<br>";
+
+        }
 
         if(file.size>100*1024*1024){
 
@@ -166,17 +182,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const data = new FormData();
 
-        data.append("tool", hiddenTool.value);
+        if(hiddenTool.value==="merge_pdf"){
 
-        data.append("file", fileInput.files[0]);
+            for(let i=0;i<fileInput.files.length;i++){
+
+                data.append(
+
+                    "files",
+
+                    fileInput.files[i]
+
+                );
+
+            }
+
+        }
+        else{
+
+            data.append(
+
+                "tool",
+
+                hiddenTool.value
+
+            );
+
+            data.append(
+
+                "file",
+
+                fileInput.files[0]
+
+            );
+
+        }
 
         try {
 
-            const response = await fetch("/convert", {
+            let url = "/convert";
 
-                method: "POST",
+            if(hiddenTool.value==="merge_pdf"){
 
-                body: data
+                url="/merge";
+
+            }
+
+            const response = await fetch(url,{
+
+                method:"POST",
+
+                body:data
 
             });
 
@@ -209,11 +264,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 original.lastIndexOf(".")
             );
 
-            let extension = ".pdf";
+            let extension=".pdf";
 
-            if (hiddenTool.value === "pdf_to_word") {
+            if(hiddenTool.value==="pdf_to_word"){
 
-                extension = ".docx";
+                extension=".docx";
+
+            }
+
+            if(hiddenTool.value==="merge_pdf"){
+
+                extension=".pdf";
 
             }
 

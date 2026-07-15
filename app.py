@@ -3,7 +3,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.requests import Request
-
+from typing import List
 from tools.converter import convert
 
 import os
@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 # --------------------------------------------------
 
 app = FastAPI(
-    title="MyWorkGenie",
+    title="My Work Genie",
     version="2.0"
 )
 
@@ -49,8 +49,6 @@ MAX_SIZE = 100 * 1024 * 1024
 SUPPORTED = {
 
     "pdf_to_word": [".pdf"],
-
-    "word_to_pdf": [".docx", ".doc"]
 
 }
 
@@ -231,3 +229,79 @@ async def convert_document(
         except:
 
             pass
+
+@app.post("/merge")
+
+async def merge_documents(
+
+    files: List[UploadFile] = File(...)
+
+):
+
+    from plugins.merge_pdf import merge_pdfs
+
+    import uuid
+
+    paths = []
+
+    try:
+
+        for file in files:
+
+            if not file.filename.lower().endswith(".pdf"):
+
+                raise HTTPException(
+
+                    400,
+
+                    "Only PDF files are allowed."
+
+                )
+
+            filename = str(uuid.uuid4()) + ".pdf"
+
+            path = os.path.join(
+
+                UPLOAD_FOLDER,
+
+                filename
+
+            )
+
+            with open(path, "wb") as f:
+
+                shutil.copyfileobj(
+
+                    file.file,
+
+                    f
+
+                )
+
+            paths.append(path)
+
+        output = merge_pdfs(paths)
+
+        return FileResponse(
+
+            output,
+
+            filename="Merged.pdf",
+
+            media_type="application/pdf"
+
+        )
+
+    finally:
+
+        for p in paths:
+
+            try:
+
+                os.remove(p)
+
+            except:
+
+                pass
+
+        

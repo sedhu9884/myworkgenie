@@ -6,8 +6,6 @@ SUPPORTED_TOOLS = {
 
     "pdf_to_word": convert_pdf_to_word,
 
-    "word_to_pdf": convert_word_to_pdf
-
 }
 
 

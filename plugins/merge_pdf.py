@@ -1,6 +1,7 @@
 import os
 import uuid
 from PyPDF2 import PdfMerger
+from pypdf import PdfWriter, PdfReader
 
 OUTPUT_FOLDER = "outputs"
 

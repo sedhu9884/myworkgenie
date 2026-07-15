@@ -1,68 +1,53 @@
 import os
 import logging
-
 import fitz
-
 from docx import Document
-
-from plugins.pdf_detector import analyze_pdf
-from plugins.pdf_ocr import extract_text_ocr
 
 logger = logging.getLogger(__name__)
 
 OUTPUT_FOLDER = "outputs"
-
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 
 def convert_pdf_to_word(pdf_path, original_name):
+    """
+    Convert text-based PDF to Word.
+    """
 
-    info = analyze_pdf(pdf_path)
-
-    output = os.path.join(
+    output_path = os.path.join(
         OUTPUT_FOLDER,
         original_name + ".docx"
     )
 
-    document = Document()
-
-    document.core_properties.title = info["title"]
-
-    document.core_properties.author = info["author"]
-
     pdf = fitz.open(pdf_path)
+
+    document = Document()
 
     try:
 
-        if info["is_text"]:
+        document.add_heading(original_name, level=1)
 
-            logger.info("Text PDF detected")
+        for page in pdf:
 
-            for page in pdf:
+            text = page.get_text("text")
 
-                text = page.get_text()
+            if text.strip():
 
-                if text.strip():
+                document.add_paragraph(text)
 
-                    document.add_paragraph(text)
+        document.save(output_path)
 
-        else:
+        logger.info("PDF converted successfully")
 
-            logger.info("OCR PDF detected")
+        return output_path
 
-            text = extract_text_ocr(pdf_path)
+    except Exception as ex:
 
-            for paragraph in text.split("\n"):
+        logger.exception(ex)
 
-                if paragraph.strip():
-
-                    document.add_paragraph(paragraph)
-
-        document.save(output)
-
-        logger.info("DOCX created")
-
-        return output
+        raise Exception(
+            "Unable to convert PDF."
+        )
 
     finally:
 

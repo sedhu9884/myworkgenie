@@ -278,11 +278,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-            const url = URL.createObjectURL(blob);
+            const downloadUrl = URL.createObjectURL(blob);
 
             const a = document.createElement("a");
 
-            a.href = url;
+            a.href = downloadUrl;
 
             a.download = baseName + extension;
 
@@ -292,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             a.remove();
 
-            window.URL.revokeObjectURL(url);
+            window.URL.revokeObjectURL(downloadUrl);
 
             loading.style.display = "none";
 
